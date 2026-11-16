@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="An interactive platform to explore housing costs and amenities in Tempe, Arizona."
+    />
+    <title>HomeScope Tempe | Housing and Neighborhood Explorer</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+    />
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="" />
+        <span>HomeScope Tempe</span>
+      </a>
+      <p class="tagline">
+        Explore Housing, People, and Nearby Amenities in Tempe
+      </p>
+
+      <nav aria-label="Main">
+        <a href="index.html" aria-current="page">Map</a>
+        <a href="about.html">About</a>
+        <a href="data.html">Data</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main-content" class="dashboard">
+      <aside class="filter-panel" aria-labelledby="filter-heading">
+        <h1 id="filter-heading">Filter Census Block Groups</h1>
+        <form id="housing-filters">
+          <fieldset>
+            <legend>Monthly Rent (Median)</legend>
+            <div class="range-inputs">
+              <div class="field">
+                <label for="rent-min">Minimum Rent ($/Month)</label>
+                <input
+                  type="number"
+                  id="rent-min"
+                  name="rent-min"
+                  min="0"
+                  step="1"
+                  value="1000"
+                />
+              </div>
+              <div class="field">
+                <label for="rent-max">Maximum Rent ($/Month)</label>
+                <input
+                  type="number"
+                  id="rent-max"
+                  name="rent-max"
+                  min="0"
+                  step="1"
+                  value="2000"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Home Value (Median)</legend>
+            <div class="range-inputs">
+              <div class="field">
+                <label for="value-min">Minimum Home Value ($)</label>
+                <input
+                  type="number"
+                  id="value-min"
+                  name="value-min"
+                  min="0"
+                  step="1000"
+                  value="200000"
+                />
+              </div>
+              <div class="field">
+                <label for="value-max">Maximum Home Value ($)</label>
+                <input
+                  type="number"
+                  id="value-max"
+                  name="value-max"
+                  min="0"
+                  step="1000"
+                  value="500000"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Amenities to Show on Map</legend>
+            <label class="spatial-layers">
+              <input type="checkbox" data-layer="transit" checked />
+              Transit Stops
+            </label>
+            <label class="spatial-layers">
+              <input type="checkbox" data-layer="schools" checked />
+              Schools
+            </label>
+            <label class="spatial-layers">
+              <input type="checkbox" data-layer="groceries" checked />
+              Grocery Stores
+            </label>
+            <label class="spatial-layers">
+              <input type="checkbox" data-layer="healthcare" />
+              Hospitals & Clinics
+            </label>
+            <label class="spatial-layers">
+              <input type="checkbox" data-layer="parks" />
+              Parks
+            </label>
+          </fieldset>
+
+          <div class="filter-actions">
+            <button type="submit">Apply Filters</button>
+            <button type="reset">Reset Filters</button>
+          </div>
+
+          <p id="filter-status" role="status"></p>
+        </form>
+      </aside>
+
+      <section class="map-panel" aria-labelledby="map-heading">
+        <h2 id="map-heading">Explore Tempe Housing</h2>
+        <p id="map-status" role="status">Loading map...</p>
+
+        <div class="map-wrapper">
+          <div
+            id="map"
+            role="region"
+            aria-label="Map of Tempe blockgroups and amenities"
+          ></div>
+        </div>
+      </section>
+
+      <aside class="details-panel" aria-labelledby="details-heading">
+        <h2 id="details-heading">Selected Census Block Group</h2>
+        <p id="selection-status" role="status">
+          Select a census block group on the map to view details.
+        </p>
+        <p id="selected-geoid"></p>
+
+        <section class="housing-summary" aria-labelledby="housing-heading">
+          <h3 id="housing-heading">Housing and Income Details</h3>
+          <dl class="metric-cards">
+            <div class="metric-card">
+              <dt>Median Monthly Rent</dt>
+              <dd id="selected-rent">-</dd>
+            </div>
+
+            <div class="metric-card">
+              <dt>Median Home Value</dt>
+              <dd id="selected-value">-</dd>
+            </div>
+
+            <div class="metric-card">
+              <dt>Median Household Income</dt>
+              <dd id="selected-income">-</dd>
+            </div>
+          </dl>
+        </section>
+      </aside>
+    </main>
+  </body>
+</html>
