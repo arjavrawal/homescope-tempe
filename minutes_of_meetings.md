@@ -31,11 +31,11 @@ For the next meeting, we decided to come in with ideas for capstone project
 
 We coordinated for the second meeting via text chat group and met on the following Wednesday and performed the following task;
 
-- All the members brogught forward their ideas.
+- All the members brought forward their ideas.
   - Nikita proposed a dashboard on housing issues that people face in Tempe
   - Farhan poposed a dashboard for identifying tree plantation sites in Tempe
-  - Arjav proposed xxxxxxx
-  - Nathan proposed xxxxxxxx
+  - Arjav agreed with proceeding with Nikita's idea
+  - Nathan agreed with proceeding with Nikita's idea
 - After listening to the proposals, the team voted on the favorites ones and we decided to make the dashboard for housing
 - Loosly discussed what we should include in the dashbaord
 - Talked about the components of Team Charter, discussed favorite roles that each member would like to play and decided about conflict resolution approaches.
@@ -66,7 +66,7 @@ The fourth meeting was held on Monday to discuss the prototype components. Based
 - We layed out components of front end prototype. This front end would include filters, map panel and details panel. We will try to build as much as possible.
 - Decided to collect the relevant data and add in the presentation as much we collect.
 - The architecture diagram stayed unchanged so far. We'll revisit it in the future if any change is required.
-- Discussed and layed out milestone timelines and decided that we complete these tasks over the weekend
+- Discussed and laid out milestone timelines and decided that we complete these tasks over the weekend
 - Next steps were to be dicussed during following Monday class session.
 
 For next meeting, we decided to come up with the individual sections and prepare a presentation.
