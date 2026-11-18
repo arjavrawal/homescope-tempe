@@ -70,3 +70,21 @@ The fourth meeting was held on Monday to discuss the prototype components. Based
 - Next steps were to be dicussed during following Monday class session.
 
 For next meeting, we decided to come up with the individual sections and prepare a presentation.
+
+## Nov 16, 2026 - 5th Meeting: Prototype Design and Development
+
+The fifth meeting was held on Monday to discuss the prototype design and development progress. Based on the roles mentioned in the Team Charter, we discussed and performed the following tasks;
+
+- Nikita explained the dashboard design, what data we need, where to collect the data from, and how to use it in the dashboard.
+- Nikita shared the design version with Farhan for frontend development.
+- Farhan developed the initial frontend prototype based on the design provided by Nikita.
+- All team members reviewed the frontend together during the meeting and discussed possible changes and improvements.
+- Nikita and Farhan provided guidance to Arjav and Nathan on the backend requirements, the initial data we need, and how to connect it to the frontend.
+- We discussed the remaining tasks for the prototype milestone submission.
+- Decided to meet again on Wednesday to review the prototype submission and discuss the next direction for dashboard development.
+
+For next meeting, we decided to meet on Wednesday, Nov 18, 2026, to finalize the prototype submission and discuss the next steps for the dashboard.
+
+
+
+
