@@ -17,6 +17,22 @@ L.control.scale({imperial: true, metric: false}).addTo(map);
 map.on("click", e => console.log(e.latlng.lat.toFixed(5), e.latlng.lng.toFixed(5)));
 map.on("moveend", () => console.log("zoom", map.getZoom()));
 
+const blocks = L.geoJSON(null, {
+    style: cityStyle,
+})
+
+function getColor(pop) {
+    if (pop == null) return "#cccccc";
+    if (pop > 2000) return "#b30000";
+    if (pop > 1500) return "#d43d1b";
+    if (pop > 1000) return "#fc8d59";
+    if (pop > 500) return "#fdcc8a";
+    return "#fef0d9";
+}
+function cityStyle(f) {
+    return { fillColor: getColor(f.properties.TotalPop), color: "#555", weight: 1, fillOpacity: 0.6 };
+}
+
 const transit = L.geoJSON(null, {
     pointToLayer: (f, latlng) => L.circleMarker(latlng, {radius: 5, color: "#333", weight: 1, fillColor: "#ffffff", fillOpacity: 1}),
     onEachFeature: (f, layer) => {
@@ -58,7 +74,18 @@ const schools = L.geoJSON(null, {
 });
 const clustered = L.markerClusterGroup();
 
-const layers = {transit, parks, healthcare, schools};
+// The schools file is statewide, so keep only open schools (not closed ones or district offices)
+const grocery = L.geoJSON(null, {
+    pointToLayer: (f, latlng) => L.circleMarker(latlng, {radius: 5, color: "white", weight: 1, fillColor: "#50b65f", fillOpacity: 0.9}),
+    onEachFeature: (f, layer) => {
+        const p = f.properties;
+        layer.bindTooltip(p.EmpName);
+        layer.bindPopup(`${p.EmpName}<br>Number of Employees: ${p.Employees}<br>${p.Jurisdiction}`);
+    }
+});
+const groceryCluster = L.markerClusterGroup();
+
+const layers = {blocks, transit, parks, healthcare, schools, grocery};
 layers.schools = clustered;
 
 const CountControl = L.Control.extend({
@@ -94,6 +121,10 @@ for (const box of document.querySelectorAll("[data-layer]")) {
 }
 
 async function start() {
+    const blockGroups = await (await fetch("data/Tempe_Block_Groups.geojson")).json();
+    blocks.addData(blockGroups);
+    blocks.addTo(map);
+
     const transitData = await (await fetch("data/rail_stations.geojson")).json();
     transit.addData(transitData);
     transit.addTo(map);
@@ -108,6 +139,11 @@ async function start() {
     schools.addData(schoolsData);
     clustered.addLayer(schools);
     clustered.addTo(map);
+
+    const groceryData = await (await fetch("data/grocery_stores.geojson")).json();
+    grocery.addData(groceryData);
+    groceryCluster.addLayer(grocery);
+    groceryCluster.addTo(map);
 
     countInView();
     document.querySelector("#map-status").textContent = "Explore Tempe. Use the checkboxes to show or hide amenities.";
