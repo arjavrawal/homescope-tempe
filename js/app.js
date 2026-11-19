@@ -74,7 +74,6 @@ const schools = L.geoJSON(null, {
 });
 const clustered = L.markerClusterGroup();
 
-// The schools file is statewide, so keep only open schools (not closed ones or district offices)
 const grocery = L.geoJSON(null, {
     pointToLayer: (f, latlng) => L.circleMarker(latlng, {radius: 5, color: "white", weight: 1, fillColor: "#50b65f", fillOpacity: 0.9}),
     onEachFeature: (f, layer) => {
@@ -87,6 +86,7 @@ const groceryCluster = L.markerClusterGroup();
 
 const layers = {blocks, transit, parks, healthcare, schools, grocery};
 layers.schools = clustered;
+layers.grocery = groceryCluster;
 
 const CountControl = L.Control.extend({
     onAdd: function () {
