@@ -27,6 +27,38 @@ const blocks = L.geoJSON(null, {
   style: cityStyle,
 });
 
+// Point icons
+const busIcon = L.icon({
+    iconUrl: "images/busStop.png",
+    iconSize: [15, 15],
+    popupAnchor: [0, -5],
+    tooltipAnchor: [5, 0]
+});
+const railIcon = L.icon({
+    iconUrl: "images/lightRail.png",
+    iconSize: [15, 15],
+    popupAnchor: [0, -5],
+    tooltipAnchor: [5, 0]
+});
+const schoolIcon = L.icon({
+    iconUrl: "images/school.png",
+    iconSize: [25, 25],
+    popupAnchor: [0, -10],
+    tooltipAnchor: [10, 0]
+});
+const groceryIcon = L.icon({
+    iconUrl: "images/grocery.png",
+    iconSize: [25, 25],
+    popupAnchor: [0, -10],
+    tooltipAnchor: [10, 0]
+});
+const hospitalIcon = L.icon({
+    iconUrl: "images/hospital.png",
+    iconSize: [25, 25],
+    popupAnchor: [0, -10],
+    tooltipAnchor: [10, 0]
+});
+
 function getColor(pop) {
   if (pop == null) return "#cccccc";
   if (pop > 2000) return "#b30000";
@@ -46,13 +78,7 @@ function cityStyle(f) {
 
 const transit = L.geoJSON(null, {
   pointToLayer: (f, latlng) =>
-    L.circleMarker(latlng, {
-      radius: 5,
-      color: "#333",
-      weight: 1,
-      fillColor: "#ffffff",
-      fillOpacity: 1,
-    }),
+    L.marker(latlng, { icon: railIcon }),
   onEachFeature: (f, layer) => {
     const p = f.properties;
     layer.bindTooltip(p.name);
@@ -80,13 +106,7 @@ const parks = L.geoJSON(null, {
 
 const healthcare = L.geoJSON(null, {
   pointToLayer: (f, latlng) =>
-    L.circleMarker(latlng, {
-      radius: 6,
-      color: "white",
-      weight: 1,
-      fillColor: "#d7301f",
-      fillOpacity: 0.9,
-    }),
+    L.marker(latlng, { icon: hospitalIcon }),
   onEachFeature: (f, layer) => {
     const p = f.properties;
     layer.bindTooltip(p.FACILITY_NAME);
@@ -101,13 +121,7 @@ const schools = L.geoJSON(null, {
   filter: (f) =>
     f.properties.Status == "Open" && f.properties.EntityType == "School",
   pointToLayer: (f, latlng) =>
-    L.circleMarker(latlng, {
-      radius: 5,
-      color: "white",
-      weight: 1,
-      fillColor: "#2b8cbe",
-      fillOpacity: 0.9,
-    }),
+    L.marker(latlng, { icon: schoolIcon }),
   onEachFeature: (f, layer) => {
     const p = f.properties;
     layer.bindTooltip(p.SchoolName);
@@ -120,13 +134,7 @@ const clustered = L.markerClusterGroup();
 
 const grocery = L.geoJSON(null, {
   pointToLayer: (f, latlng) =>
-    L.circleMarker(latlng, {
-      radius: 5,
-      color: "white",
-      weight: 1,
-      fillColor: "#50b65f",
-      fillOpacity: 0.9,
-    }),
+    L.marker(latlng, { icon: groceryIcon }),
   onEachFeature: (f, layer) => {
     const p = f.properties;
     layer.bindTooltip(p.EmpName);
@@ -160,6 +168,7 @@ function countInView() {
     [transit, map.hasLayer(transit)],
     [healthcare, map.hasLayer(healthcare)],
     [schools, map.hasLayer(clustered)],
+    [grocery, map.hasLayer(groceryCluster)]
   ]) {
     if (!shown) continue;
     group.eachLayer((l) => {
