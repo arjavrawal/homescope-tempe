@@ -59,6 +59,8 @@
         <form id="housing-filters">
           <fieldset>
             <legend>Monthly Rent (Median)</legend>
+              <label class="spatial-layers">
+                <input type="checkbox" id="use-rent" checked />Filter by monthly rent</label>
             <div class="range-inputs">
               <div class="field">
                 <label for="rent-min">Minimum Rent ($/Month)</label>
@@ -85,6 +87,8 @@
 
           <fieldset>
             <legend>Home Value (Median)</legend>
+            <label class="spatial-layers">
+              <input type="checkbox" id="use-value" />Filter by home value</label>
             <div class="range-inputs">
               <div class="field">
                 <label for="value-min">Minimum Home Value ($)</label>
@@ -124,7 +128,7 @@
               Grocery Stores
             </label>
             <label class="spatial-layers">
-              <input type="checkbox" data-layer="healthcare" />
+              <input type="checkbox" data-layer="healthcare" checked />
               Hospitals & Clinics
             </label>
             <label class="spatial-layers">
@@ -337,17 +341,17 @@
 
       <dt>Schools</dt>
       <dd>
-        AZGeo
+        Arizona Department of Education via AZGeo
       </dd>
 
       <dt>Grocery Stores</dt>
       <dd>
-        Grocery store source to be added
+        Maricopa Association of Governments (MAG)
       </dd>
 
       <dt>Hospitals and Clinics</dt>
       <dd>
-        AZGeo
+        Arizona Department of Health Services via AZGeo
       </dd>
 
       <dt>Parks</dt>
@@ -394,10 +398,10 @@
 
     <h3>Project Team</h3>
     <ul>
-      <li>Nikita Soni - nsoni17@asu.edu</li>
-      <li>Farhan Abbas - fabbas12@asu.edu</li>
-      <li>Arjav Rawal - adrawal@asu.edu</li>
-      <li>Nathan Dejonge - ndejonge@asu.edu</li>
+      <li>Nikita Soni - <a href="mailto:nsoni17@asu.edu">nsoni17@asu.edu</a></li>
+      <li>Farhan Abbas - <a href="mailto:fabbas12@asu.edu">fabbas12@asu.edu</a></li>
+      <li>Arjav Rawal - <a href="mailto:arjav@asu.edu">arjav@asu.edu</a></li>
+      <li>Nathan Dejonge - <a href="mailto:ndejonge@asu.edu">ndejonge@asu.edu</a></li>
     </ul>
     </div>
     </dialog>
