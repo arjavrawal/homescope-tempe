@@ -80,11 +80,9 @@ The fifth meeting was held on Monday to discuss the prototype design and develop
 - Farhan developed the initial frontend prototype based on the design provided by Nikita.
 - All team members reviewed the frontend together during the meeting and discussed possible changes and improvements.
 - Nikita and Farhan provided guidance to Arjav and Nathan on the backend requirements, the initial data we need, and how to connect it to the frontend.
+  - The options to connect data were via a static GeoJSON or a backend spatil service like GeoServer.
+  - It was decided to go with static GeoJSON as it will be simple to handle, and the datasets are not big enough to warrant a dedicated backend service.
 - We discussed the remaining tasks for the prototype milestone submission.
 - Decided to meet again on Wednesday to review the prototype submission and discuss the next direction for dashboard development.
 
 For next meeting, we decided to meet on Wednesday, Nov 18, 2026, to finalize the prototype submission and discuss the next steps for the dashboard.
-
-
-
-
