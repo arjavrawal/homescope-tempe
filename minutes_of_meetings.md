@@ -74,7 +74,6 @@ For next meeting, we decided to come up with the individual sections and prepare
 ## Nov 16, 2026 - 5th Meeting: Prototype Design and Development
 
 The fifth meeting was held on Monday to discuss the prototype design and development progress. Based on the roles mentioned in the Team Charter, we discussed and performed the following tasks;
-
 - Nikita explained the dashboard design, what data we need, where to collect the data from, and how to use it in the dashboard.
 - Nikita shared the design version with Farhan for frontend development.
 - Farhan developed the initial frontend prototype based on the design provided by Nikita.
@@ -86,3 +85,31 @@ The fifth meeting was held on Monday to discuss the prototype design and develop
 - Decided to meet again on Wednesday to review the prototype submission and discuss the next direction for dashboard development.
 
 For next meeting, we decided to meet on Wednesday, Nov 18, 2026, to finalize the prototype submission and discuss the next steps for the dashboard.
+
+## Nov 18, 2026 - 6th Meeting: Prototype Completion and Final Dashboard Planning
+
+The sixth meeting was held on Wednesday to finalize the prototype submission and discuss the remaining tasks for dashboard development. We discussed and performed the following tasks;
+- Arjav and Nathan worked on backend development, data integration, and the essential functionality of the filters.
+- The team integrated the available datasets and tested the functionality of the dashboard.
+- All team members reviewed the working prototype and discussed the remaining components.
+- The demographic filters were identified as the main remaining component required to make the dashboard fully functional.
+- The team discussed how to integrate demographic data and connect it with the dashboard filters.
+- Nikita prepared the presentation for the prototype milestone submission.
+- The team discussed and assigned responsibilities for the remaining frontend and backend development tasks.
+- All team members reviewed and submitted the required components for the prototype milestone.
+- 
+For the next meeting, we decided to focus on completing the demographic filters, integrating the remaining data, and making the dashboard fully functional before the final submission on November 30, 2026.
+
+## Nov 23, 2026 - 7th Meeting: Dashboard Testing and Final Submission Planning
+
+The seventh meeting was held on Monday to review the fully functional dashboard, test its functionality, and discuss the remaining responsibilities for the final project submission. We discussed and performed the following tasks:
+- Arjav and Nathan demonstrated the working dashboard, including all filters, integrated datasets, and interactive map features.
+- All team members reviewed the dashboard demo and tested its functionality to identify any remaining issues or improvements.
+- The team discussed the final project deliverables and assigned responsibilities for completing the required documentation.
+  - Nikita will prepare the user documentation, update the group meeting minutes, and complete the README file.
+  - Farhan will prepare the project report and technical memo.
+- All team members discussed the final presentation format and assigned presentation slides to each team member.
+- The team also discussed preparing the project code for peer review.
+- The team reviewed the remaining tasks and established priorities for completing all final deliverables before the submission deadline.
+
+For the next and final meeting, we decided to meet on Monday, Nov 30, 2026, to review all project deliverables, verify the final dashboard functionality, and conduct a final demonstration before presenting the dashboard in class.
