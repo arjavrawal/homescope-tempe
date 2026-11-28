@@ -44,13 +44,13 @@ const blocks = L.geoJSON(null, {
 // Point icons
 const busIcon = L.icon({
     iconUrl: "images/busStop.png",
-    iconSize: [15, 15],
+    iconSize: [20, 20],
     popupAnchor: [0, -5],
     tooltipAnchor: [5, 0]
 });
 const railIcon = L.icon({
     iconUrl: "images/lightRail.png",
-    iconSize: [15, 15],
+    iconSize: [20, 20],
     popupAnchor: [0, -5],
     tooltipAnchor: [5, 0]
 });
@@ -73,20 +73,9 @@ const hospitalIcon = L.icon({
     tooltipAnchor: [10, 0]
 });
 
-function getColor(pop) {
-  if (pop == null) return "#cccccc";
-  if (pop > 2000) return "#b30000";
-  if (pop > 1500) return "#d43d1b";
-  if (pop > 1000) return "#fc8d59";
-  if (pop > 500) return "#fdcc8a";
-  return "#fef0d9";
-}
 let filters = null; // stays null until Apply Filters is pressed
 function cityStyle(f) {
-  if (filters && !matchesFilters(f.properties)) {
-    return { fillColor: "#cccccc", color: "#999999", weight: 1, fillOpacity: 0.15 };
-  }
-  return { fillColor: getColor(f.properties.TotalPop), color: "#555", weight: 1, fillOpacity: 0.6 };
+  return { fillColor: "#999", color: "#555", weight: 1, fillOpacity: 0.6 };
 }
 
 const transit = L.geoJSON(null, {
