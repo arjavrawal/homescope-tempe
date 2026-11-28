@@ -18,11 +18,6 @@ L.control.layers(basemaps, null, { position: "topleft" }).addTo(map);
 
 L.control.scale({ imperial: true, metric: false }).addTo(map);
 
-map.on("click", (e) =>
-  console.log(e.latlng.lat.toFixed(5), e.latlng.lng.toFixed(5)),
-);
-map.on("moveend", () => console.log("zoom", map.getZoom()));
-
 map.createPane("blocksPane").style.zIndex = 300;
 let current = null; // the block group that's selected right now
 const selectedStyle = { color: "#8c1d40", weight: 4 };
@@ -44,13 +39,13 @@ const blocks = L.geoJSON(null, {
 // Point icons
 const busIcon = L.icon({
     iconUrl: "images/busStop.png",
-    iconSize: [20, 20],
+    iconSize: [22, 22],
     popupAnchor: [0, -5],
     tooltipAnchor: [5, 0]
 });
 const railIcon = L.icon({
     iconUrl: "images/lightRail.png",
-    iconSize: [20, 20],
+    iconSize: [22, 22],
     popupAnchor: [0, -5],
     tooltipAnchor: [5, 0]
 });
@@ -75,7 +70,10 @@ const hospitalIcon = L.icon({
 
 let filters = null; // stays null until Apply Filters is pressed
 function cityStyle(f) {
-  return { fillColor: "#999", color: "#555", weight: 1, fillOpacity: 0.6 };
+  if (filters && !matchesFilters(f.properties)) {
+    return { fillColor: "#fc8d59", color: "#999999", weight: 1, fillOpacity: 0.15 };
+  }
+  return { fillColor: "#fc8d59", color: "#555", weight: 1, fillOpacity: 0.6 };
 }
 
 const transit = L.geoJSON(null, {
